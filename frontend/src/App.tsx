@@ -1,5 +1,6 @@
+import "./styles/global.scss";
 import React from "react";
 
 export default function App() {
-  return <div>App</div>;
+  return <div>Derp</div>;
 }
