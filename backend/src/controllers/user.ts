@@ -1,5 +1,5 @@
 import { type RequestHandler } from 'express';
-import { CreateUserInputSchema, UserIdSchema } from '../schema/user';
+import { CreateUserInputSchema, ObjectIdSchema } from '../schema/user';
 import User from '../models/user';
 import { hashString, randomString } from '../util/crypto';
 import createError from 'http-errors';
@@ -56,7 +56,7 @@ const createUserHandler: RequestHandler = async (req, res, next) => {
 export const readUserHandler: RequestHandler = async (req, res, next) => {
   try {
     // Make sure Params are correct is of the right type
-    UserIdSchema.parse(req.params);
+    ObjectIdSchema.parse(req.params);
 
     const userExists = await User.findOne({ _id: req.params.id });
     if (userExists === null) return next(createError(404, 'User not found'));
@@ -89,7 +89,7 @@ export const allUsersHandler: RequestHandler = async (_req, res, next) => {
 
 export const updateUserHandler: RequestHandler = async (req, res, next) => {
   try {
-    UserIdSchema.parse(req.params);
+    ObjectIdSchema.parse(req.params);
     // TODO: Add Body Validation
     const userExists = await User.findByIdAndUpdate(req.params.id, {
       ...req.body,
@@ -103,8 +103,7 @@ export const updateUserHandler: RequestHandler = async (req, res, next) => {
 
 export const deleteUserHandler: RequestHandler = async (req, res, next) => {
   try {
-    UserIdSchema.parse(req.params);
-
+    ObjectIdSchema.parse(req.params);
     const userExists = await User.findOne({ _id: req.params.id });
     if (userExists === null) return next(createError(404, 'User not found'));
     await User.findByIdAndDelete(req.params.id);

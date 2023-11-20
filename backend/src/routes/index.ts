@@ -2,6 +2,7 @@ import express from 'express';
 import healthRouter from './health';
 import userRouter from './user';
 import authRouter from './auth';
+import docRouter from './docs';
 
 const router = express.Router();
 
@@ -15,5 +16,8 @@ router.use('/health', healthRouter);
 router.use('/user', userRouter);
 
 // Recipes
+
+// Docs
+router.use('/docs', docRouter);
 
 export default router;
