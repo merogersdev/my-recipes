@@ -1,20 +1,21 @@
 {
-  "name": "backend",
+  "name": "my-recipes-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.ts",
+  "repository": "git@github.com:merogersdev/my-recipes.git",
+  "author": "Michelle Rogers <michelle@merogers.dev>",
+  "license": "MIT",
+  "main": "src/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.ts --ext ts"
+    "dev": "nodemon src/server.ts --ext ts"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/compression": "^1.7.5",
     "@types/cookie-parser": "^1.4.6",
     "@types/cors": "^2.8.16",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.5",
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.9.0",
     "@typescript-eslint/eslint-plugin": "^6.11.0",

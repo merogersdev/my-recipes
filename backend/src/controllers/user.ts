@@ -1,8 +1,22 @@
 import { type RequestHandler } from 'express';
-import { CreateUserInputSchema } from '../schema/user';
+import { CreateUserInputSchema, UserIdSchema } from '../schema/user';
 import User from '../models/user';
 import { hashString, randomString } from '../util/crypto';
 import createError from 'http-errors';
+
+// type Jwt = {
+//   id: string;
+//   iat: number;
+//   exp: number;
+// };
+
+// interface TokenRequest extends Request {
+//   user: Jwt;
+// }
+
+// interface TokenResponse extends Response {
+//   user: Jwt;
+// }
 
 const createUserHandler: RequestHandler = async (req, res, next) => {
   try {
@@ -35,7 +49,68 @@ const createUserHandler: RequestHandler = async (req, res, next) => {
       },
     });
   } catch (error) {
-    next(createError(500, 'Failed to Create user'));
+    next(error);
+  }
+};
+
+export const readUserHandler: RequestHandler = async (req, res, next) => {
+  try {
+    // Make sure Params are correct is of the right type
+    UserIdSchema.parse(req.params);
+
+    const userExists = await User.findOne({ _id: req.params.id });
+    if (userExists === null) return next(createError(404, 'User not found'));
+
+    res.status(200).json({
+      user: {
+        firstName: userExists.firstName,
+        lastName: userExists.lastName,
+        email: userExists.email,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const allUsersHandler: RequestHandler = async (_req, res, next) => {
+  try {
+    // Return Users with no sensitive data
+    const users = await User.find().select(['-password', '-salt', '-authorizationToken', '-refreshToken']);
+    if (users === null) return next(createError(404, 'No Users found'));
+
+    res.status(200).json({
+      users,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateUserHandler: RequestHandler = async (req, res, next) => {
+  try {
+    UserIdSchema.parse(req.params);
+    // TODO: Add Body Validation
+    const userExists = await User.findByIdAndUpdate(req.params.id, {
+      ...req.body,
+    });
+    if (userExists === null) return next(createError(404, 'User not found'));
+    return res.sendStatus(200);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteUserHandler: RequestHandler = async (req, res, next) => {
+  try {
+    UserIdSchema.parse(req.params);
+
+    const userExists = await User.findOne({ _id: req.params.id });
+    if (userExists === null) return next(createError(404, 'User not found'));
+    await User.findByIdAndDelete(req.params.id);
+    res.sendStatus(200);
+  } catch (error) {
+    next(error);
   }
 };
 

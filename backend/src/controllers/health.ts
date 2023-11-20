@@ -1,6 +1,6 @@
-import { type Request, type Response, type NextFunction } from 'express';
+import { type RequestHandler } from 'express';
 
-export const healthCheck = (_req: Request, res: Response, _next: NextFunction) => {
+export const healthCheck: RequestHandler = (_req, res, _next) => {
   res.sendStatus(200);
 };
 

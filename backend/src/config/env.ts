@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { z } from 'zod';
 
 // Type Safe Environment Variables
