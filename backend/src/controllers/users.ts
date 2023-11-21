@@ -73,7 +73,7 @@ export const readUserHandler: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const allUsersHandler: RequestHandler = async (_req, res, next) => {
+export const readUsersHandler: RequestHandler = async (_req, res, next) => {
   try {
     // Return Users with no sensitive data
     const users = await User.find().select(['-password', '-salt', '-authorizationToken', '-refreshToken']);

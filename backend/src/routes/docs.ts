@@ -1,24 +1,9 @@
-/**
- * @swagger
- * tags:
- *  name: Docs
- *  description: API Documentation
- * /api/v1/docs:
- *   get:
- *     tags: [Docs]
- *     responses:
- *       200:
- *         description: Returns Status 200
- */
-
 import express from 'express';
-import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import options from '../config/swagger';
+import docs from '../api-docs.json';
 
 const router = express.Router();
 
-const specs = swaggerJsdoc(options);
-router.use('/', swaggerUi.serve, swaggerUi.setup(specs));
+router.use('/', swaggerUi.serve, swaggerUi.setup(docs));
 
 export default router;

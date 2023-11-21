@@ -3,6 +3,9 @@ import mongoose, { type Document } from 'mongoose';
 export interface RecipeType {
   userid: string;
   name: string;
+  cookTime: number;
+  prepTime: number;
+  temperature: number;
   description: string;
   method: string;
   ingredients: string[];
@@ -21,6 +24,15 @@ const RecipeSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+    },
+    cookTime: {
+      type: Number,
+    },
+    prepTime: {
+      type: Number,
+    },
+    temperature: {
+      type: Number,
     },
     description: {
       type: String,

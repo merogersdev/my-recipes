@@ -1,6 +1,6 @@
 import express from 'express';
 import healthRouter from './health';
-import userRouter from './user';
+import userRouter from './users';
 import authRouter from './auth';
 import docRouter from './docs';
 
@@ -13,11 +13,11 @@ router.use('/auth', authRouter);
 router.use('/health', healthRouter);
 
 // Users
-router.use('/user', userRouter);
+router.use('/users', userRouter);
 
 // Recipes
 
-// Docs
-router.use('/docs', docRouter);
+// API Docs
+router.use('/api-docs', docRouter);
 
 export default router;

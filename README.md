@@ -4,23 +4,24 @@
 
 ## Quick Summary
 
-Full-Stack MERN (MongoDB, Express, React, Node) application to store recipes.
+Full-Stack application to easily create, modify and store your own recipes. Deployable to any Docker hosting provider.
 
 ## Tech Stack
 
 - React
+- Docker
 - Webpack
 - Typescript
 - TailwindCSS
 - Redux Toolkit
 - Node.js & Express
 - MongoDB & Mongoose
-- Docker
 - Github Actions for CI/CD
+- Swagger API Documentation
 
 ## Scripts
 
-## Tags
+## Badges
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
@@ -32,3 +33,8 @@ Full-Stack MERN (MongoDB, Express, React, Node) application to store recipes.
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
+
+## License
+
+![LICENSE](https://img.shields.io/badge/LICENSE-MIT-%23008b00?style=flat-square)
