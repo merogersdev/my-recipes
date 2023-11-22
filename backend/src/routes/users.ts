@@ -1,6 +1,6 @@
 import express from 'express';
 import createUserHandler, {
-  readUsersHandler,
+  readAllUsersHandler,
   readUserHandler,
   updateUserHandler,
   deleteUserHandler,
@@ -8,7 +8,7 @@ import createUserHandler, {
 
 const router = express.Router();
 
-router.route('/').get(readUsersHandler).post(createUserHandler);
+router.route('/').get(readAllUsersHandler).post(createUserHandler);
 router.route('/:id').get(readUserHandler).patch(updateUserHandler).delete(deleteUserHandler);
 
 export default router;

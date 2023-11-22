@@ -4,20 +4,6 @@ import User from '../models/user';
 import { hashString, randomString } from '../util/crypto';
 import createError from 'http-errors';
 
-// type Jwt = {
-//   id: string;
-//   iat: number;
-//   exp: number;
-// };
-
-// interface TokenRequest extends Request {
-//   user: Jwt;
-// }
-
-// interface TokenResponse extends Response {
-//   user: Jwt;
-// }
-
 const createUserHandler: RequestHandler = async (req, res, next) => {
   try {
     // User Input Validation
@@ -73,7 +59,7 @@ export const readUserHandler: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const readUsersHandler: RequestHandler = async (_req, res, next) => {
+export const readAllUsersHandler: RequestHandler = async (_req, res, next) => {
   try {
     // Return Users with no sensitive data
     const users = await User.find().select(['-password', '-salt', '-authorizationToken', '-refreshToken']);

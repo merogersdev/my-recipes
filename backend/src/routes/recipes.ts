@@ -1,6 +1,6 @@
 import express from 'express';
 import createRecipeHandler, {
-  readRecipesHandler,
+  readAllRecipesHandler,
   readRecipeHandler,
   updateRecipeHandler,
   deleteRecipeHandler,
@@ -8,7 +8,7 @@ import createRecipeHandler, {
 
 const router = express.Router();
 
-router.route('/').get(readRecipesHandler).post(createRecipeHandler);
+router.route('/').get(readAllRecipesHandler).post(createRecipeHandler);
 router.route('/:id').get(readRecipeHandler).patch(updateRecipeHandler).delete(deleteRecipeHandler);
 
 export default router;

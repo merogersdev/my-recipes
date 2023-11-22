@@ -3,9 +3,9 @@ import mongoose, { type Document } from 'mongoose';
 export interface RecipeType {
   userid: string;
   name: string;
-  cookTime: number;
-  prepTime: number;
-  temperature: number;
+  cookTime?: number;
+  prepTime?: number;
+  temperature?: number;
   description: string;
   method: string;
   ingredients: string[];
